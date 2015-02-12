@@ -134,7 +134,8 @@ public final class Main
             System.exit(numErrs);
         }
         catch (ApplicationExitException aee) {
-            System.out.println(aee.getCause());
+            //Catch ApplicationExitException to ensure exit points from this method only
+            //System.out.println("Exit from one place");
             System.exit(1);
         }
     }
@@ -255,8 +256,6 @@ public final class Main
             System.out.println("Error loading configuration file");
             e.printStackTrace(System.out);
             throw new ApplicationExitException();
-            //System.exit(1);
-            //return null; // can never get here
         }
     }
 
@@ -269,8 +268,6 @@ public final class Main
                         + Main.class.getName()
                         + " [options] -c <config.xml> file...",
                 OPTS);
-        //System.exit(1); //No need to call exit(1) here. 
-        //Exit call should be from main method only
     }
 
     /**
@@ -318,7 +315,6 @@ public final class Main
                     + file.getAbsolutePath());
             ex.printStackTrace(System.out);
             throw new ApplicationExitException();
-            //System.exit(1);
         }
         finally {
             Utils.closeQuietly(fis);
