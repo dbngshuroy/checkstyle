@@ -66,6 +66,7 @@ public final class Main
     /**
      * Loops over the files specified checking them for errors. The exit code
      * is the number of errors found in all the files.
+     * 
      * @param args the command line arguments
      **/
     public static void main(String[] args)
@@ -141,11 +142,12 @@ public final class Main
 
     /**
      * Creates the Checker object.
+     * 
      * @param config the configuration to use
      * @param nosy the sticky beak to track what happens
      * @return a nice new fresh Checker
-     * @throws ApplicationExitException
-     *         Handled in main method only to Exit from single method
+     * @throws ApplicationExitException Handled in main method only
+     * to Exit from single method
      */
     private static Checker createChecker(Configuration config,
             AuditListener nosy)
@@ -156,14 +158,14 @@ public final class Main
             c = new Checker();
 
             final ClassLoader moduleClassLoader =
-                    Checker.class.getClassLoader();
+                Checker.class.getClassLoader();
             c.setModuleClassLoader(moduleClassLoader);
             c.configure(config);
             c.addListener(nosy);
         }
         catch (final Exception e) {
             System.out.println("Unable to create Checker: "
-                    + e.getMessage());
+                               + e.getMessage());
             e.printStackTrace(System.out);
             throw new ApplicationExitException();
         }
@@ -172,6 +174,7 @@ public final class Main
 
     /**
      * Determines the files to process.
+     * 
      * @param line the command line options specifying what files to process
      * @return list of files to process
      * @throws ApplicationExitException
@@ -196,6 +199,7 @@ public final class Main
 
     /**
      * Create the audit listener
+     * 
      * @param line command line options supplied
      * @param out the stream to log to
      * @param closeOut whether the stream should be closed
@@ -204,12 +208,12 @@ public final class Main
      *         Handled in main method only to Exit from single method
      */
     private static AuditListener createListener(CommandLine line,
-            OutputStream out,
-            boolean closeOut)
-            throws ApplicationExitException
+                                                OutputStream out,
+                                                boolean closeOut)
+                                                throws ApplicationExitException
     {
         final String format =
-                line.hasOption("f") ? line.getOptionValue("f") : "plain";
+            line.hasOption("f") ? line.getOptionValue("f") : "plain";
 
         AuditListener listener = null;
         if ("xml".equals(format)) {
@@ -220,7 +224,7 @@ public final class Main
         }
         else {
             System.out.println("Invalid format: (" + format
-                    + "). Must be 'plain' or 'xml'.");
+                               + "). Must be 'plain' or 'xml'.");
             usage();
             throw new ApplicationExitException();
         }
@@ -229,6 +233,7 @@ public final class Main
 
     /**
      * Loads the configuration file. Will exit if unable to load.
+     * 
      * @param line specifies the location of the configuration
      * @param props the properties to resolve with the configuration
      * @return a fresh new configuration
@@ -241,7 +246,7 @@ public final class Main
     {
         try {
             return ConfigurationLoader.loadConfiguration(
-                    line.getOptionValue("c"), new PropertiesExpander(props));
+                line.getOptionValue("c"), new PropertiesExpander(props));
         }
         catch (final CheckstyleException e) {
             System.out.println("Error loading configuration file");
@@ -255,15 +260,17 @@ public final class Main
     {
         final HelpFormatter hf = new HelpFormatter();
         hf.printHelp(
-                "java "
-                        + Main.class.getName()
-                        + " [options] -c <config.xml> file...",
-                OPTS);
+            "java "
+                + Main.class.getName()
+                + " [options] -c <config.xml> file...",
+            OPTS);
     }
 
     /**
      * Traverses a specified node looking for files to check. Found
-     * files are added to a specified list. Subdirectories are also traversed.
+     * files are added to a specified list. Subdirectories are also
+     * traversed.
+     * 
      * @param node the node to process
      * @param files list to add found files to
      */
@@ -284,6 +291,7 @@ public final class Main
 
     /**
      * Loads properties from a File.
+     * 
      * @param file the properties file
      * @return the properties in file
      * @throws ApplicationExitException
