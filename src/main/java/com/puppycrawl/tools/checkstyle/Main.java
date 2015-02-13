@@ -66,7 +66,6 @@ public final class Main
     /**
      * Loops over the files specified checking them for errors. The exit code
      * is the number of errors found in all the files.
-     * 
      * @param args the command line arguments
      **/
     public static void main(String[] args)
