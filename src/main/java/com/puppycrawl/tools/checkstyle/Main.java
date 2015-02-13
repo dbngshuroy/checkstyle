@@ -52,9 +52,9 @@ public final class Main
         OPTS.addOption("o", true, "Sets the output file. Defaults to stdout");
         OPTS.addOption("p", true, "Loads the properties file");
         OPTS.addOption(
-                "f",
-                true,
-                "Sets the output format. (plain|xml). Defaults to plain");
+            "f",
+            true,
+            "Sets the output format. (plain|xml). Defaults to plain");
         OPTS.addOption("v", false, "Print product version and exit");
     }
 
@@ -64,10 +64,9 @@ public final class Main
     }
 
     /**
-     * Loops over the files specified checking them for errors. The exit code is the number of
-     * errors found in all the files.
-     * @param args
-     *        the command line arguments
+     * Loops over the files specified checking them for errors. The exit code
+     * is the number of errors found in all the files.
+     * @param args the command line arguments
      **/
     public static void main(String[] args)
     {
@@ -142,10 +141,8 @@ public final class Main
 
     /**
      * Creates the Checker object.
-     * @param config
-     *        the configuration to use
-     * @param nosy
-     *        the sticky beak to track what happens
+     * @param config the configuration to use
+     * @param nosy the sticky beak to track what happens
      * @return a nice new fresh Checker
      * @throws ApplicationExitException
      *         Handled in main method only to Exit from single method
@@ -175,8 +172,7 @@ public final class Main
 
     /**
      * Determines the files to process.
-     * @param line
-     *        the command line options specifying what files to process
+     * @param line the command line options specifying what files to process
      * @return list of files to process
      * @throws ApplicationExitException
      *         Handled in main method only to Exit from single method
@@ -200,12 +196,9 @@ public final class Main
 
     /**
      * Create the audit listener
-     * @param line
-     *        command line options supplied
-     * @param out
-     *        the stream to log to
-     * @param closeOut
-     *        whether the stream should be closed
+     * @param line command line options supplied
+     * @param out the stream to log to
+     * @param closeOut whether the stream should be closed
      * @return a fresh new <code>AuditListener</code>
      * @throws ApplicationExitException
      *         Handled in main method only to Exit from single method
@@ -236,10 +229,8 @@ public final class Main
 
     /**
      * Loads the configuration file. Will exit if unable to load.
-     * @param line
-     *        specifies the location of the configuration
-     * @param props
-     *        the properties to resolve with the configuration
+     * @param line specifies the location of the configuration
+     * @param props the properties to resolve with the configuration
      * @return a fresh new configuration
      * @throws ApplicationExitException
      *         Handled in main method only to Exit from single method
@@ -271,12 +262,10 @@ public final class Main
     }
 
     /**
-     * Traverses a specified node looking for files to check. Found files are added to a specified
-     * list. Subdirectories are also traversed.
-     * @param node
-     *        the node to process
-     * @param files
-     *        list to add found files to
+     * Traverses a specified node looking for files to check. Found
+     * files are added to a specified list. Subdirectories are also traversed.
+     * @param node the node to process
+     * @param files list to add found files to
      */
     private static void traverse(File node, List<File> files)
     {
@@ -295,8 +284,7 @@ public final class Main
 
     /**
      * Loads properties from a File.
-     * @param file
-     *        the properties file
+     * @param file the properties file
      * @return the properties in file
      * @throws ApplicationExitException
      *         Handled in main method only to Exit from single method
@@ -312,7 +300,7 @@ public final class Main
         }
         catch (final IOException ex) {
             System.out.println("Unable to load properties from file: "
-                    + file.getAbsolutePath());
+                + file.getAbsolutePath());
             ex.printStackTrace(System.out);
             throw new ApplicationExitException();
         }
