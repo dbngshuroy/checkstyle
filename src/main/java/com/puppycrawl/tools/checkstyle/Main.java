@@ -142,7 +142,7 @@ public final class Main
 
     /**
      * Creates the Checker object.
-     * 
+     *
      * @param config the configuration to use
      * @param nosy the sticky beak to track what happens
      * @return a nice new fresh Checker
@@ -150,8 +150,8 @@ public final class Main
      * to Exit from single method
      */
     private static Checker createChecker(Configuration config,
-            AuditListener nosy)
-            throws ApplicationExitException
+                                         AuditListener nosy)
+                                         throws ApplicationExitException
     {
         Checker c = null;
         try {
@@ -174,7 +174,7 @@ public final class Main
 
     /**
      * Determines the files to process.
-     * 
+     *
      * @param line the command line options specifying what files to process
      * @return list of files to process
      * @throws ApplicationExitException
@@ -199,7 +199,7 @@ public final class Main
 
     /**
      * Create the audit listener
-     * 
+     *
      * @param line command line options supplied
      * @param out the stream to log to
      * @param closeOut whether the stream should be closed
@@ -233,7 +233,7 @@ public final class Main
 
     /**
      * Loads the configuration file. Will exit if unable to load.
-     * 
+     *
      * @param line specifies the location of the configuration
      * @param props the properties to resolve with the configuration
      * @return a fresh new configuration
@@ -270,7 +270,7 @@ public final class Main
      * Traverses a specified node looking for files to check. Found
      * files are added to a specified list. Subdirectories are also
      * traversed.
-     * 
+     *
      * @param node the node to process
      * @param files list to add found files to
      */
@@ -291,7 +291,7 @@ public final class Main
 
     /**
      * Loads properties from a File.
-     * 
+     *
      * @param file the properties file
      * @return the properties in file
      * @throws ApplicationExitException
